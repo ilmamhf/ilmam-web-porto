@@ -2,26 +2,24 @@ import type { PersonalInfo, Project, Experience, SkillCategory, LogPost } from '
 
 /**
  * =========================================================================
- * PORTFOLIO DATA CONFIGURATION
+ * PORTFOLIO DATA CONFIGURATION (Junior & Multi-Division Friendly)
  * =========================================================================
- * To change images:
- * - Profile avatar: set `avatarUrl` to a web URL or place your image in `public/` (e.g., "/profile.jpg")
- * - Project images: set `imageUrl` for each project (e.g., "/projects/project1.png" or Unsplash URL)
+ * Focused on curiosity, cross-division versatility, continuous learning,
+ * and hands-on building.
  */
 
 export const personalInfo: PersonalInfo = {
   name: "Ilmam",
   kanjiName: "イルマム",
-  // Profile picture: Can be an external URL, or a local image placed in public/ (e.g. "/avatar.jpg")
   avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
-  role: "Software Engineer & Systems Architect",
-  tagline: "Designing resilient backend architectures, clean APIs, and minimalist interfaces.",
-  bio: "Software engineer dedicated to crafting high-performance, maintainable web systems. Guided by principles of restraint, clean modular design, and robust distributed fundamentals. Constantly exploring the intersection of modern web ecosystems, cloud infrastructure, and intuitive developer tooling.",
+  role: "Junior Software Engineer",
+  tagline: "Curious builder with cross-division exposure across frontend, backend, QA, and operations.",
+  bio: "Early-career software engineer passionate about learning across the full product spectrum. Having collaborated across engineering, QA, product support, and operations, I value clear communication, pragmatic code, and steady continuous improvement. Always excited to dig into new technologies and contribute to a collaborative team.",
   location: "Indonesia / Remote",
   timezone: "UTC+7 (WIB)",
   availability: {
     status: "available",
-    label: "Open to new engineering challenges & collaborations"
+    label: "Open to Junior / Associate Engineering opportunities"
   },
   contact: {
     email: "ilmam.dev@example.com",
@@ -31,182 +29,184 @@ export const personalInfo: PersonalInfo = {
     resumeUrl: "#"
   },
   stats: [
-    { value: "4+", label: "Years Experience", sublabel: "Production Systems" },
-    { value: "99.9%", label: "Uptime Targets", sublabel: "SLA Reliability" },
-    { value: "15+", label: "Projects Shipped", sublabel: "From Concept to Scale" },
-    { value: "10k+", label: "Daily Transactions", sublabel: "Optimized Pipelines" }
+    { value: "3+", label: "Divisions Explored", sublabel: "Frontend · Backend · Ops" },
+    { value: "10+", label: "Projects & Repos", sublabel: "Hands-on Exploration" },
+    { value: "100%", label: "Curiosity & Grit", sublabel: "Continuous Learning" },
+    { value: "Fast", label: "Team Ramp-Up", sublabel: "Adaptable & Collaborative" }
   ]
 };
 
 export const projects: Project[] = [
   {
-    id: "kuro-cloud-engine",
-    title: "Kuro Engine — High-Throughput Event Broker",
-    japaneseTitle: "黒・エンジン",
-    description: "Distributed lightweight event ingestion and telemetry streaming engine designed for low-latency messaging, microservices decoupling, and structured audit logs.",
+    id: "flowpulse-ops-portal",
+    title: "FlowPulse — Cross-Division Workflow Portal",
+    japaneseTitle: "業務・連携基盤",
+    description: "Internal dashboard and ticketing tool created to bridge operations and engineering, streamlining bug escalations, feature requests, and daily task sync.",
     architectureDetails: [
-      "Engineered partitioned log buffer handling over 12,000 requests/sec with sub-millisecond p99 latency.",
-      "Implemented zero-copy serialization protocol reducing network bandwidth consumption by 34%.",
-      "Integrated Prometheus metrics collector and automated health checking mechanisms."
+      "Built responsive UI with React and Tailwind CSS featuring searchable ticket filters and status boards.",
+      "Developed lightweight REST API with Node.js and Express to handle CRUD operations and file attachments.",
+      "Collaborated with operational team members to gather feedback and refine user workflows."
     ],
-    techStack: ["Go", "gRPC", "Redis", "Docker", "Prometheus", "PostgreSQL"],
-    category: "Backend & Systems",
-    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    githubUrl: "https://github.com",
-    liveUrl: "https://demo.example.com",
-    featured: true,
-    metrics: "12k req/sec · sub-ms p99"
-  },
-  {
-    id: "zenith-commerce-api",
-    title: "Zenith Commerce Platform",
-    japaneseTitle: "頂点・プラットフォーム",
-    description: "Enterprise multi-tenant headless commerce engine featuring dynamic inventory reconciliation, idempotent checkout processing, and real-time webhook dispatching.",
-    architectureDetails: [
-      "Designed distributed locking mechanism using Redis to eliminate race conditions during high-volume flash sales.",
-      "Structured comprehensive REST and GraphQL APIs with automated OpenAPI contract tests.",
-      "Deployed automated CI/CD pipeline reducing release cycle turnaround time by 60%."
-    ],
-    techStack: ["TypeScript", "Node.js", "NestJS", "PostgreSQL", "Redis", "Docker", "AWS"],
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "PostgreSQL"],
     category: "Full-Stack",
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     githubUrl: "https://github.com",
     liveUrl: "https://demo.example.com",
     featured: true,
-    metrics: "99.98% Idempotency Accuracy"
+    metrics: "Reduced internal ticket triage time by 35%"
   },
   {
-    id: "kaizen-dev-observability",
-    title: "Kaizen — Developer Log & Metrics Suite",
-    japaneseTitle: "改善・観測基盤",
-    description: "Developer-first telemetry visualization workspace providing live log query filtering, distributed tracing traces, and automated performance anomaly alerts.",
+    id: "zenith-storefront-app",
+    title: "Zenith Storefront — Modern E-Commerce Web App",
+    japaneseTitle: "商品・購入体験",
+    description: "Full-featured shopping web app with responsive catalog browsing, cart state management, checkout simulation, and dynamic theme switching.",
     architectureDetails: [
-      "Built reactive dashboard with virtualized infinite scrolling handling 100k+ DOM log entries smoothly.",
-      "Optimized query parser utilizing WebAssembly regex engine for instantaneous pattern matches."
+      "Implemented clean client-side state management using Zustand for instantaneous cart updates.",
+      "Designed mobile-first accessible navigation following WCAG color contrast guidelines.",
+      "Integrated mock payment API handling success, timeout, and validation states gracefully."
     ],
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Go", "ClickHouse", "WebSockets"],
-    category: "Full-Stack",
+    techStack: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Zustand"],
+    category: "Frontend & UI",
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    githubUrl: "https://github.com",
+    liveUrl: "https://demo.example.com",
+    featured: true,
+    metrics: "100/100 Lighthouse Accessibility score"
+  },
+  {
+    id: "kurolog-telemetry-api",
+    title: "KuroLog — Structured Logger & API Utility",
+    japaneseTitle: "記録・API基盤",
+    description: "Lightweight backend REST API service for structured application logs, error tracing, and formatted query inspection for developer teams.",
+    architectureDetails: [
+      "Structured modular MVC architecture with clear separation of routes, controllers, and services.",
+      "Added request validation middleware and automated error handlers with meaningful status codes.",
+      "Wrote integration test suites using Jest and Supertest covering primary API endpoints."
+    ],
+    techStack: ["Node.js", "Express", "PostgreSQL", "Jest", "Docker"],
+    category: "Backend & APIs",
     imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
     githubUrl: "https://github.com",
     liveUrl: "https://demo.example.com",
     featured: true,
-    metrics: "<50ms query responses"
+    metrics: "85%+ Automated test coverage"
   },
   {
-    id: "shizuka-infra-kit",
-    title: "Shizuka — Declarative Infrastructure Kit",
-    japaneseTitle: "静か・インフラ",
-    description: "Infrastructure-as-code modules and Kubernetes operator for reproducible cloud native deployments with built-in zero-trust security postures.",
+    id: "deploycraft-ci-starter",
+    title: "DeployCraft — CI/CD Pipeline & Docker Boilerplate",
+    japaneseTitle: "自動化・開発環境",
+    description: "Reproducible containerized development starter kit with automated linting, test execution, and deployment previews on GitHub Actions.",
     architectureDetails: [
-      "Custom Kubernetes custom resource definitions (CRD) managing database failovers automatically.",
-      "Automated mutual TLS (mTLS) certificate rotation via cert-manager and HashiCorp Vault."
+      "Configured multi-stage Dockerfile optimizing container build cache and keeping image size minimal.",
+      "Automated GitHub Actions workflow for pull request checks, code formatting, and build verification."
     ],
-    techStack: ["Terraform", "Kubernetes", "Go", "AWS EKS", "GitHub Actions"],
-    category: "Cloud & DevOps",
+    techStack: ["Docker", "GitHub Actions", "Shell Scripting", "Linux"],
+    category: "Tools & Ops",
     imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
     githubUrl: "https://github.com",
     featured: false,
-    metrics: "Zero-Downtime Deployments"
+    metrics: "Turnkey multi-environment dev setup"
   }
 ];
 
 export const experiences: Experience[] = [
   {
     id: "exp-1",
-    role: "Senior Software Engineer",
-    company: "Apex Systems Labs",
+    role: "Junior Software Engineer",
+    company: "Apex Tech Solutions",
     companyUrl: "https://example.com",
     period: "2023 — Present",
     location: "Jakarta / Remote",
     type: "Full-Time",
-    description: "Leading core backend infrastructure and API microservices. Spearheaded system scalability initiatives and mentored junior engineers.",
+    description: "Contributing across frontend features, backend API integrations, and maintenance of customer-facing web services while learning team standards and best practices.",
     highlights: [
-      "Refactored legacy monolith into domain-driven event-driven microservices, reducing deployment risk and downtime by 75%.",
-      "Architected caching layers using Redis clusters that decreased database load during peak traffic spikes by 40%.",
-      "Formulated code review guidelines and automated linting/testing pipelines to standardize software quality across teams."
+      "Developed and tested 15+ UI components in React and TypeScript following the design team's Figma specifications.",
+      "Assisted in backend REST API maintenance, fixing edge cases and writing SQL queries for reporting features.",
+      "Collaborated actively with QA and Product teams to reproduce, debug, and resolve reported client bugs during sprint cycles.",
+      "Participated in daily standups, sprint reviews, and technical code reviews to learn clean architecture habits."
     ],
-    technologies: ["Go", "TypeScript", "PostgreSQL", "Kafka", "Docker", "Kubernetes", "AWS"]
+    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS", "Git", "Jira"]
   },
   {
     id: "exp-2",
-    role: "Full-Stack Software Engineer",
+    role: "Software Engineering Intern / Cross-Division Rotation",
     company: "Nexus Digital Innovation",
     companyUrl: "https://example.com",
-    period: "2021 — 2023",
-    location: "Remote",
-    type: "Full-Time",
-    description: "Engineered client-facing web applications and internal operational portals used by thousands of daily enterprise users.",
+    period: "2022 — 2023",
+    location: "Hybrid",
+    type: "Internship",
+    description: "Rotated through product operations, technical QA testing, and web development to understand the full software development lifecycle.",
     highlights: [
-      "Built modular React/TypeScript component systems with high accessibility standards and sub-second initial load times.",
-      "Engineered secure payment gateway integrations with automated webhook verification and retry queues.",
-      "Collaborated with product designers to implement clean, minimal interfaces that boosted conversion rates by 22%."
+      "Documented API endpoints using Postman and Swagger, improving onboarding clarity for new team contributors.",
+      "Conducted manual and automated regression testing before production releases to prevent regressions.",
+      "Assisted operations staff by building internal scripts to automate repetitive data entry workflows."
     ],
-    technologies: ["React", "Node.js", "Express", "TypeScript", "Tailwind CSS", "MongoDB", "Redis"]
+    technologies: ["JavaScript", "HTML/CSS", "Postman", "Git", "Excel/Sheets Automation", "Jest"]
   },
   {
     id: "exp-3",
-    role: "Junior Backend Developer",
-    company: "KuroTech Studio",
+    role: "Independent Builder & Computer Science Journey",
+    company: "Academic & Self-Directed Projects",
     companyUrl: "https://example.com",
-    period: "2020 — 2021",
-    location: "Hybrid",
-    type: "Contract",
-    description: "Developed RESTful APIs, optimized database indexes, and assisted in building automated test suites.",
+    period: "2021 — 2022",
+    location: "Remote",
+    type: "Learning & Projects",
+    description: "Deep dive into web fundamentals, computer science foundations, algorithms, and practical software engineering.",
     highlights: [
-      "Implemented comprehensive unit and integration test coverage increasing codebase test suite coverage from 45% to 88%.",
-      "Optimized slow SQL queries via index tuning, cutting report generation times from 14s to 800ms."
+      "Built multiple full-stack projects from scratch to understand client-server communication, relational databases, and DOM manipulation.",
+      "Practiced collaborative Git workflows, semantic commits, and open-source contribution etiquette."
     ],
-    technologies: ["Node.js", "PostgreSQL", "Docker", "Jest", "Git"]
+    technologies: ["JavaScript", "Python", "SQL", "HTML5", "CSS3", "Git"]
   }
 ];
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Core Languages",
-    japaneseTitle: "言語",
+    title: "Programming & Foundations",
+    japaneseTitle: "基礎・言語",
     skills: [
-      { name: "TypeScript", level: "Advanced" },
-      { name: "JavaScript (ESNext)", level: "Advanced" },
-      { name: "Go (Golang)", level: "Advanced" },
-      { name: "SQL", level: "Proficient" },
-      { name: "Python", level: "Proficient" },
-      { name: "HTML5 / CSS3", level: "Advanced" }
+      { name: "JavaScript (ES6+)", level: "Proficient" },
+      { name: "TypeScript", level: "Proficient" },
+      { name: "HTML5 / CSS3", level: "Proficient" },
+      { name: "SQL (PostgreSQL / MySQL)", level: "Familiar" },
+      { name: "Python Basics", level: "Familiar" },
+      { name: "Go (Golang)", level: "Learning" }
     ]
   },
   {
-    title: "Backend & Systems",
-    japaneseTitle: "バックエンド",
-    skills: [
-      { name: "Node.js / Bun", level: "Advanced" },
-      { name: "RESTful & GraphQL APIs", level: "Advanced" },
-      { name: "gRPC & Protocol Buffers", level: "Proficient" },
-      { name: "PostgreSQL & MySQL", level: "Advanced" },
-      { name: "Redis Caching", level: "Advanced" },
-      { name: "Event-Driven & Message Queues", level: "Proficient" }
-    ]
-  },
-  {
-    title: "Frontend Engineering",
+    title: "Frontend Development",
     japaneseTitle: "フロントエンド",
     skills: [
-      { name: "React 19 / 18", level: "Advanced" },
-      { name: "Next.js", level: "Proficient" },
-      { name: "Tailwind CSS", level: "Advanced" },
-      { name: "Vite & Modern Bundlers", level: "Advanced" },
-      { name: "State Management (Zustand)", level: "Proficient" },
-      { name: "UI/UX & Accessibility", level: "Proficient" }
+      { name: "React 19 / 18", level: "Proficient" },
+      { name: "Tailwind CSS", level: "Proficient" },
+      { name: "Next.js", level: "Familiar" },
+      { name: "Responsive UI & Mobile Web", level: "Proficient" },
+      { name: "State Management (Zustand/Context)", level: "Familiar" },
+      { name: "Vite Build Tooling", level: "Proficient" }
     ]
   },
   {
-    title: "Infrastructure & DevOps",
-    japaneseTitle: "インフラ・基盤",
+    title: "Backend & Data",
+    japaneseTitle: "バックエンド・データ",
     skills: [
-      { name: "Docker & Containerization", level: "Advanced" },
-      { name: "Kubernetes Basics", level: "Familiar" },
-      { name: "AWS Cloud Services", level: "Proficient" },
-      { name: "CI/CD (GitHub Actions)", level: "Advanced" },
-      { name: "Linux Administration", level: "Proficient" },
-      { name: "Git Workflow & Branching", level: "Advanced" }
+      { name: "Node.js / Express", level: "Proficient" },
+      { name: "RESTful API Design", level: "Proficient" },
+      { name: "PostgreSQL Database", level: "Familiar" },
+      { name: "CRUD Operations & Data Modeling", level: "Proficient" },
+      { name: "Authentication (JWT / Sessions)", level: "Familiar" },
+      { name: "API Documentation (Postman/Swagger)", level: "Proficient" }
+    ]
+  },
+  {
+    title: "Cross-Division & Tools",
+    japaneseTitle: "協業・ツール",
+    skills: [
+      { name: "Git & GitHub Collaboration", level: "Proficient" },
+      { name: "QA & Unit Testing (Jest)", level: "Familiar" },
+      { name: "Docker Basics", level: "Familiar" },
+      { name: "CI/CD (GitHub Actions)", level: "Learning" },
+      { name: "Agile & Jira Workflows", level: "Proficient" },
+      { name: "Figma to Code Translation", level: "Proficient" }
     ]
   }
 ];
@@ -214,26 +214,26 @@ export const skillCategories: SkillCategory[] = [
 export const logPosts: LogPost[] = [
   {
     id: "log-01",
-    title: "Designing Idempotent APIs: Handling Distributed Retries Gracefully",
-    date: "2026-08-14",
-    readTime: "6 min read",
-    summary: "Architecting payment gateways and webhook dispatchers that guarantee exactly-once business outcome despite network failures and repeated requests.",
-    tags: ["Backend", "Architecture", "Distributed Systems"]
+    title: "Lessons Learned From Multi-Division Exposure: Bridging Ops & Engineering",
+    date: "2026-08-10",
+    readTime: "4 min read",
+    summary: "How spending time with operations and QA completely reshaped how I write backend error messages, validate inputs, and structure user-friendly APIs.",
+    tags: ["Reflection", "Cross-Division", "Teamwork"]
   },
   {
     id: "log-02",
-    title: "The Art of Restraint in Modern Web Architecture",
-    date: "2026-06-22",
-    readTime: "4 min read",
-    summary: "Why stripping away unnecessary dependencies, premature abstractions, and heavy UI bloat leads to faster software and calmer developer workflows.",
-    tags: ["Philosophy", "Web Engineering", "Clean Code"]
+    title: "My Journey With TypeScript: Moving From 'Any' to Confident Type Safety",
+    date: "2026-05-18",
+    readTime: "5 min read",
+    summary: "Practical takeaways from refactoring JavaScript apps to TypeScript, handling union types, generics, and writing maintainable component props.",
+    tags: ["TypeScript", "Frontend", "Learning"]
   },
   {
     id: "log-03",
-    title: "PostgreSQL Index Tuning: From 12-Second Full Scans to Index-Only Lookups",
-    date: "2026-04-10",
-    readTime: "8 min read",
-    summary: "A practical deep dive into B-Trees, GiST, partial indexes, and analyzing EXPLAIN ANALYZE execution trees in high-concurrency environments.",
-    tags: ["PostgreSQL", "Database", "Performance"]
+    title: "Demystifying SQL Joins and Query Optimization for Junior Developers",
+    date: "2026-03-02",
+    readTime: "6 min read",
+    summary: "A beginner-friendly exploration of INNER vs. LEFT joins, indexes, and how understanding database execution prevents nasty N+1 query bottlenecks.",
+    tags: ["SQL", "Databases", "Fundamentals"]
   }
 ];

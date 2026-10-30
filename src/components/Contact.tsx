@@ -21,7 +21,7 @@ export const Contact: FC = () => {
           number="05"
           title="Initiate Contact & Collaboration"
           japaneseTitle="連絡・お問い合わせ"
-          description="Have an upcoming project, engineering role, or technical challenge to discuss? Feel free to reach out directly."
+          description="Interested in discussing a junior engineering role, open-source project, or engineering collaboration? Reach out directly."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -33,11 +33,11 @@ export const Contact: FC = () => {
               </span>
 
               <h3 className="text-2xl sm:text-3xl font-semibold text-neutral-900 tracking-tight leading-snug">
-                Let's construct resilient software solutions together.
+                Let's build meaningful software and collaborate together.
               </h3>
 
               <p className="mt-4 text-base text-neutral-600 leading-relaxed font-normal">
-                Currently open for software engineering positions, high-throughput backend design, and system modernization initiatives.
+                Currently open for junior/associate software engineering positions, cross-division teamwork, and web development opportunities.
               </p>
 
               {/* Email Copy Card */}
@@ -145,20 +145,20 @@ export const Contact: FC = () => {
               {/* Japanese Seal Stamp (Hanko) */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 border-2 border-[#C8321A] text-[#C8321A] rounded-xs flex items-center justify-center p-1 font-serif text-xs leading-tight text-center font-bold select-none">
-                  確実<br />開発
+                  初心<br />向上
                 </div>
                 <div>
                   <h4 className="font-semibold text-sm text-neutral-900">
-                    Quiet Craftsmanship
+                    Beginner's Mind (Shoshin)
                   </h4>
                   <p className="text-xs text-neutral-500 font-serif">
-                    簡素 · 誠実 · 堅牢
+                    初心 · 好奇心 · 継続的成長
                   </p>
                 </div>
               </div>
 
               <blockquote className="text-xs text-neutral-600 leading-relaxed italic border-l-2 border-neutral-200 pl-3">
-                "Simplicity is prerequisite for reliability. Remove until it breaks, then keep only what provides genuine value."
+                "In the beginner's mind there are many possibilities. Stay humble, ask questions, and continuously refine the craft."
               </blockquote>
 
               <div className="mt-6 pt-6 border-t border-neutral-100 space-y-3 text-xs text-neutral-500 font-mono">

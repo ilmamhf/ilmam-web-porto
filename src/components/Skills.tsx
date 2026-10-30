@@ -24,9 +24,9 @@ export const Skills: FC = () => {
       <div className="max-w-6xl mx-auto px-6 sm:px-8">
         <SectionHeading
           number="03"
-          title="Technical Arsenal & Tooling"
-          japaneseTitle="技術スタック・専門分野"
-          description="Technologies and frameworks leveraged in daily production environments to build stable, maintainable systems."
+          title="Technical Tooling & Foundations"
+          japaneseTitle="技術基盤・習得分野"
+          description="Languages, frameworks, database tools, and cross-division collaborative workflows I work with."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

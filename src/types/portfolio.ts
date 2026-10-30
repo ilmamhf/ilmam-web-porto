@@ -32,7 +32,7 @@ export interface Project {
   description: string;
   architectureDetails: string[];
   techStack: string[];
-  category: 'Full-Stack' | 'Backend & Systems' | 'Cloud & DevOps' | 'Open Source';
+  category: 'Full-Stack' | 'Frontend & UI' | 'Backend & APIs' | 'Tools & Ops';
   liveUrl?: string;
   githubUrl?: string;
   featured: boolean;
@@ -58,7 +58,7 @@ export interface SkillCategory {
   japaneseTitle?: string;
   skills: Array<{
     name: string;
-    level?: 'Advanced' | 'Proficient' | 'Familiar';
+    level?: 'Proficient' | 'Familiar' | 'Learning' | 'Advanced';
     iconName?: string;
   }>;
 }

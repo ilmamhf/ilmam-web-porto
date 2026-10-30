@@ -60,7 +60,7 @@ export const Hero: FC = () => {
           <div className="lg:col-span-8 flex flex-col justify-between">
             <div>
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-neutral-900 leading-[1.12]">
-                Engineering resilient systems, clean architectures, and disciplined digital craft.
+                Building web applications with curiosity, adaptability, and disciplined craft.
               </h1>
 
               <p className="mt-6 text-lg sm:text-xl text-neutral-600 font-normal leading-relaxed max-w-2xl">
@@ -139,11 +139,11 @@ export const Hero: FC = () => {
               <div className="mt-3 pt-2.5 px-1 border-t border-neutral-100 flex items-center justify-between text-xs font-mono">
                 <div className="flex flex-col">
                   <span className="font-semibold text-neutral-800">{personalInfo.name}</span>
-                  <span className="text-[10px] text-neutral-400">LEAD ENGINEER</span>
+                  <span className="text-[10px] text-neutral-400">SOFTWARE ENGINEER</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-emerald-700 text-[11px]">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span>ONLINE</span>
+                  <span>OPEN FOR ROLES</span>
                 </div>
               </div>
             </div>

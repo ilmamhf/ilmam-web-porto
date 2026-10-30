@@ -8,7 +8,7 @@ import { GithubIcon } from './UI/Icons';
 export const Projects: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const categories = ['All', 'Backend & Systems', 'Full-Stack', 'Cloud & DevOps'];
+  const categories = ['All', 'Full-Stack', 'Frontend & UI', 'Backend & APIs', 'Tools & Ops'];
 
   const filteredProjects = selectedCategory === 'All'
     ? projects
@@ -20,9 +20,9 @@ export const Projects: FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <SectionHeading
             number="01"
-            title="Selected Projects & Architecture"
-            japaneseTitle="制作・実装実績"
-            description="Production-grade systems, distributed microservices, and web platforms designed for resilience and scalability."
+            title="Selected Works & Practical Builds"
+            japaneseTitle="制作・開発プロジェクト"
+            description="Hands-on web applications, developer utilities, and internal tools bridging frontend, backend, and operations."
           />
 
           {/* Category Filter Pills */}
@@ -114,7 +114,7 @@ export const Projects: FC = () => {
                   {project.architectureDetails && project.architectureDetails.length > 0 && (
                     <div className="mt-5 pt-4 border-t border-neutral-100">
                       <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 block mb-2">
-                        Architecture Highlights
+                        Key Highlights & Learnings
                       </span>
                       <ul className="space-y-1.5 text-xs text-neutral-600">
                         {project.architectureDetails.map((detail, idx) => (

@@ -11,7 +11,7 @@ export const Experience: FC = () => {
           number="02"
           title="Work History & Experience"
           japaneseTitle="職務経歴・実績"
-          description="Track record of engineering roles, system migrations, and production reliability."
+          description="Practical experience across engineering, QA testing, cross-functional sprints, and operational workflows."
         />
 
         <div className="space-y-12">
