@@ -1,0 +1,59 @@
+/* Japanese UI design tokens. Set data-mode on the root (or any container):
+   quiet | sterile | punk | nerv | y2k
+   Role names are shared across modes so components never change, only the tokens do.
+   Hex values are starting points; contrast for each text pair is documented in references/color.md. */
+
+:root {
+  --font-ui: "Inter", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans JP", system-ui, sans-serif;
+  --font-serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "EB Garamond", Georgia, serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --ease-calm: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-snap: cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+/* Default = quiet */
+[data-mode="quiet"], :root:not([data-mode]) {
+  --c-bg: #F4F0E6;  --c-surface: #FBF8F1;  --c-ink: #1B1B1B;  --c-muted: #5C5A55;
+  --c-accent: #223A70;  --c-on-accent: #FFFFFF;  --c-accent2: #B33A3A;  --c-line: rgba(27,27,27,.16);
+  --font-display: var(--font-serif);  --font-body: var(--font-ui);
+  --radius: 2px;  --leading: 1.85;  --tracking: .04em;  --section-pad: clamp(3.5rem, 10vw, 9rem);
+}
+
+/* Sterile elegance (NieR-like): warm beige, flat, one drab accent */
+[data-mode="sterile"] {
+  --c-bg: #D1CAB4;  --c-surface: #C4BCA5;  --c-ink: #3A372F;  --c-muted: #4F4A40;
+  --c-accent: #8F3A24;  --c-on-accent: #F3EEDD;  --c-accent2: #3A372F;  --c-line: rgba(58,55,47,.45);  --c-grid: rgba(58,55,47,.12);
+  --font-display: var(--font-serif);  --font-body: var(--font-serif);
+  --radius: 0;  --leading: 1.8;  --tracking: .06em;  --section-pad: clamp(3rem, 8vw, 7rem);
+}
+
+/* Punk-kinetic (Persona-like): black, white, one hot red */
+[data-mode="punk"] {
+  --c-bg: #000000;  --c-surface: #FFFFFF;  --c-ink: #FFFFFF;  --c-muted: #C9C9C9;
+  --c-accent: #D4001A;  --c-on-accent: #FFFFFF;  --c-accent2: #FFFFFF;  --c-line: #FFFFFF;
+  --c-on-surface: #000000;  --c-accent-text: #FF4D4D; /* red for SMALL text on black: 6.4:1. #D4001A is fills only (3.8:1 as text) */
+  --font-display: "Dela Gothic One", "Impact", "Arial Black", "Noto Sans JP", sans-serif;  --font-body: var(--font-ui);
+  --radius: 0;  --leading: 1.6;  --tracking: .01em;  --section-pad: clamp(2rem, 6vw, 5rem);
+}
+
+/* Command center (NERV-like): true black, orange labels, green data */
+[data-mode="nerv"] {
+  --c-bg: #080807;  --c-surface: #0C0C0A;  --c-ink: #FF9830;  --c-muted: #C87020;
+  --c-accent: #50FF50;  --c-on-accent: #080807;  --c-accent2: #FF4D3D;  --c-line: rgba(255,152,48,.55);  --c-grid: rgba(255,152,48,.13);
+  --font-display: "Shippori Mincho B1", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;  --font-body: var(--font-mono);
+  --radius: 0;  --leading: 1.6;  --tracking: .08em;  --section-pad: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Cyber-pop Y2K: neon on deep navy */
+[data-mode="y2k"] {
+  --c-bg: #0A0B1E;  --c-surface: #14163A;  --c-ink: #E8ECFF;  --c-muted: #9AA0C8;
+  --c-accent: #00F0FF;  --c-on-accent: #0A0B1E;  --c-accent2: #FF2BD6;  --c-line: rgba(0,240,255,.5);
+  --c-accent3: #B6FF00;
+  --font-display: "Orbitron", "Eurostile", "Arial Black", "Noto Sans JP", sans-serif;  --font-body: var(--font-ui);
+  --radius: 10px;  --leading: 1.7;  --tracking: .03em;  --section-pad: clamp(2rem, 6vw, 5rem);
+}
+
+/* Base: apply on the same element that carries data-mode */
+[data-mode] { background: var(--c-bg); color: var(--c-ink); font-family: var(--font-body); line-height: var(--leading); letter-spacing: var(--tracking); }
+:lang(ja) { line-break: strict; overflow-wrap: anywhere; font-style: normal; }
+:lang(ja) :is(h1, h2, h3) { word-break: auto-phrase; text-wrap: balance; }

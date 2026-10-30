@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Japanese UI modes: gallery</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="effects.css">
+<style>
+  *{box-sizing:border-box} body{margin:0;background:#111;font-family:system-ui,sans-serif}
+  header.top{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:1rem 1.25rem;color:#eee;background:#111;position:sticky;top:0;z-index:5}
+  header.top button{background:#eee;color:#111;border:0;padding:.5rem 1rem;font:inherit;cursor:pointer;min-height:44px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,30rem),1fr));gap:2px}
+  .panel{position:relative;overflow:hidden;padding:clamp(1.25rem,4vw,2.5rem);min-height:34rem;display:flex;flex-direction:column;gap:1.25rem}
+  .kicker{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c-muted)}
+  h2.title{margin:0;font-family:var(--font-display);line-height:1.15}
+  p{margin:0;max-width:34em}
+  ul.menu{list-style:none;margin:0;padding:0}
+  .btn{font:inherit;cursor:pointer;min-height:44px;padding:.6rem 1.4rem;border:1px solid var(--c-ink);background:transparent;color:var(--c-ink);width:fit-content}
+  .card{padding:1rem 1.25rem;border:1px solid var(--c-line);background:var(--c-surface)}
+  .alert{display:flex;gap:.6rem;align-items:center}
+  .alert b{white-space:nowrap;flex:none}
+
+  /* quiet */
+  [data-mode=quiet] h2.title{font-weight:400;font-size:clamp(2rem,5vw,3rem);letter-spacing:.06em;margin-top:2rem}
+  [data-mode=quiet] .menu li{padding:.9rem 0;border-bottom:1px solid var(--c-line)}
+  [data-mode=quiet] .menu li[aria-current]{color:var(--c-accent)}
+  [data-mode=quiet] .btn{border-color:var(--c-line);color:var(--c-accent);letter-spacing:.12em;padding-inline:2rem}
+  [data-mode=quiet] .card{border:0;border-top:1px solid var(--c-line);background:transparent;padding-left:0}
+  [data-mode=quiet] .alert b{color:var(--c-accent2)}
+
+  /* sterile */
+  [data-mode=sterile] h2.title{font-weight:500;font-size:clamp(1.8rem,4.4vw,2.6rem);text-transform:uppercase;letter-spacing:.16em}
+  [data-mode=sterile] .menu li{padding:.55rem 1rem;border-bottom:1px solid var(--c-line)}
+  [data-mode=sterile] .menu li[aria-current]{background:var(--c-ink);color:var(--c-bg)}
+  [data-mode=sterile] .btn{border-radius:0;letter-spacing:.14em;text-transform:uppercase}
+  [data-mode=sterile] .card{background:var(--c-surface);border-color:var(--c-ink)}
+  [data-mode=sterile] .alert b{color:var(--c-accent)}
+
+  /* punk */
+  [data-mode=punk] h2.title{font-size:clamp(2.6rem,8vw,4.6rem);text-transform:uppercase;line-height:.95;transform:rotate(-3deg);transform-origin:left bottom;color:var(--c-ink);text-shadow:4px 4px 0 var(--c-accent)}
+  [data-mode=punk] .menu{display:flex;flex-direction:column;gap:.5rem}
+  [data-mode=punk] .menu li{width:min(calc(100% - 1.5rem),22rem);padding:.6rem 1.2rem;background:var(--c-surface);color:var(--c-on-surface);font-weight:800;text-transform:uppercase;transform:skewX(-8deg)}
+  [data-mode=punk] .menu li:nth-child(even){margin-left:1.5rem}
+  [data-mode=punk] .menu li[aria-current]{background:var(--c-accent);color:var(--c-on-accent);transform:skewX(-8deg) scale(1.06) rotate(-1deg)}
+  [data-mode=punk] .btn{background:var(--c-accent);color:var(--c-on-accent);border:3px solid var(--c-ink);font-weight:800;text-transform:uppercase;transform:rotate(-2deg)}
+  [data-mode=punk] .card{background:var(--c-surface);color:var(--c-on-surface);border:0;transform:rotate(1.5deg);box-shadow:6px 6px 0 var(--c-accent)}
+  [data-mode=punk] .card .kicker{color:#444}
+
+  /* nerv */
+  [data-mode=nerv] .panel{border:1px solid var(--c-line)}
+  [data-mode=nerv] h2.title{font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:.02em;text-transform:uppercase}
+  [data-mode=nerv] .menu li{padding:.4rem .8rem;border-left:3px solid var(--c-line);text-transform:uppercase;font-size:.85rem}
+  [data-mode=nerv] .menu li[aria-current]{border-left-color:var(--c-accent);color:var(--c-accent);background:rgba(80,255,80,.07)}
+  [data-mode=nerv] .btn{border-color:var(--c-ink);text-transform:uppercase;letter-spacing:.14em;font-size:.85rem}
+  [data-mode=nerv] .card{border:1px solid var(--c-line);background:var(--c-surface)}
+  [data-mode=nerv] .data{color:var(--c-accent);font-size:1.6rem}
+  [data-mode=nerv] .alert{color:var(--c-accent2);border:1px solid var(--c-accent2);padding:.5rem .8rem}
+
+  /* y2k */
+  [data-mode=y2k]{background:radial-gradient(circle at 20% 0%,#2a1f6b 0,var(--c-bg) 55%)}
+  [data-mode=y2k] h2.title{font-style:italic;font-weight:900;font-size:clamp(2.2rem,6vw,3.6rem);text-transform:uppercase;background:linear-gradient(180deg,#fff 0,var(--c-accent) 55%,#5b6cff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 12px rgba(0,240,255,.45))}
+  [data-mode=y2k] .menu li{padding:.6rem 1rem;margin-bottom:.4rem;border:1px solid var(--c-line);border-radius:var(--radius);background:rgba(20,22,58,.7)}
+  [data-mode=y2k] .menu li[aria-current]{border-color:var(--c-accent3);box-shadow:0 0 14px rgba(182,255,0,.4);color:var(--c-accent3)}
+  [data-mode=y2k] .btn{border-radius:999px;border:0;color:var(--c-on-accent);font-weight:800;background:linear-gradient(180deg,#e9ffff,var(--c-accent) 50%,#2ab6c4);box-shadow:0 0 18px rgba(0,240,255,.5)}
+  [data-mode=y2k] .card{border-radius:var(--radius);border-color:var(--c-accent2);box-shadow:0 0 16px rgba(255,43,214,.35)}
+  [data-mode=y2k] .alert b{color:var(--c-accent2)}
+</style>
+</head>
+<body>
+<header class="top"><strong>Japanese UI modes</strong><button id="calm" aria-pressed="false">Calm mode: off</button></header>
+<main class="grid">
+
+<section class="panel fx-reveal" data-mode="quiet" aria-label="Quiet minimal">
+  <span class="kicker">Mode 1 · Quiet minimal</span>
+  <h2 class="title">静かな余白<br>A room to breathe</h2>
+  <p>Space is part of the message. One focal point, thin lines, slow motion.</p>
+  <ul class="menu"><li aria-current="page">メニュー · Menu</li><li>設定 · Settings</li><li>保存 · Save</li></ul>
+  <button class="btn">開始 · Begin</button>
+  <div class="card"><span class="kicker">Status</span><p>All changes are saved.</p></div>
+  <div class="alert"><b>●</b> 警告 · Please review before sending.</div>
+</section>
+
+<section class="panel fx-grid-faint fx-vignette" data-mode="sterile" aria-label="Sterile elegance">
+  <span class="kicker">Mode 2 · Sterile elegance</span>
+  <div class="motif-staff"><h2 class="title">Systematic,<br>sterile, beautiful</h2></div>
+  <p>Flat warm beige, classical serif, a faint grid, darkened edges. Colour is nearly absent.</p>
+  <ul class="menu"><li aria-current="page">メニュー · Menu</li><li>設定 · Settings</li><li>保存 · Save</li></ul>
+  <button class="btn">開始 · Begin</button>
+  <div class="card motif-doublebar"><span class="kicker">Status</span><p>Unit data synchronised.</p></div>
+  <div class="alert"><b>▲ 警告</b> Warnings use the one drab accent plus a symbol.</div>
+</section>
+
+<section class="panel" data-mode="punk" aria-label="Punk kinetic">
+  <span class="kicker">Mode 3 · Punk-kinetic</span>
+  <h2 class="title fx-kinetic">Take your<br>heart</h2>
+  <p>Black, white and one hot red. Tilted panels, cut-out type, stable positions.</p>
+  <ul class="menu"><li class="fx-kinetic" style="--i:1" aria-current="page">メニュー Menu</li><li class="fx-kinetic" style="--i:2">設定 Settings</li><li class="fx-kinetic" style="--i:3">保存 Save</li></ul>
+  <button class="btn">開始 Begin</button>
+  <div class="card"><span class="kicker">Status</span><p>Mission updated.</p></div>
+  <div class="alert"><b>■ 警告</b> Warnings are white on red with a block icon.</div>
+</section>
+
+<section class="panel fx-grid fx-scanlines" data-mode="nerv" aria-label="Command center">
+  <span class="kicker">Mode 4 · Command center</span>
+  <h2 class="title"><span class="fx-compress">状態 // SYSTEM STATUS</span></h2>
+  <ul class="menu"><li aria-current="page">メニュー · Overview</li><li>接続 · Link</li><li>設定 · Config</li></ul>
+  <div class="card"><span class="kicker">Sync rate</span><div class="data">087.4 %</div></div>
+  <button class="btn">開始 · Begin</button>
+  <div class="alert"><b>▲ 警告</b> Link unstable: severity 2</div>
+</section>
+
+<section class="panel fx-scanlines" data-mode="y2k" aria-label="Cyber-pop Y2K">
+  <span class="kicker">Mode 5 · Cyber-pop Y2K</span>
+  <h2 class="title fx-glitch">Neon<br>Signal</h2>
+  <p>Neon on deep navy, translucent glass, chrome buttons, a flicker of glitch.</p>
+  <ul class="menu"><li aria-current="page">メニュー · Menu</li><li>設定 · Settings</li><li>保存 · Save</li></ul>
+  <button class="btn">開始 · Begin</button>
+  <div class="card"><span class="kicker">Status</span><p>Now streaming.</p></div>
+  <div class="alert"><b>◆ 警告</b> Warnings are magenta with a diamond icon.</div>
+</section>
+
+</main>
+<script>
+  var b=document.getElementById('calm'),h=document.documentElement;
+  b.addEventListener('click',function(){var on=h.hasAttribute('data-calm');
+    if(on){h.removeAttribute('data-calm')}else{h.setAttribute('data-calm','')}
+    b.textContent='Calm mode: '+(on?'off':'on');b.setAttribute('aria-pressed',String(!on));});
+</script>
+</body>
+</html>

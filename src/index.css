@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: "Shippori Mincho", "Noto Serif JP", Georgia, serif;
+
+  --color-washi: #FAFAF9;
+  --color-washi-surface: #FFFFFF;
+  --color-sumi: #18181B;
+  --color-sumi-muted: #71717A;
+  --color-sumi-faint: #A1A1AA;
+  --color-hairline: #E4E4E7;
+  --color-hairline-subtle: #F4F4F5;
+  --color-beni: #C8321A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: var(--color-sumi);
+    background-color: var(--color-washi);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    line-height: 1.7;
+    background-color: var(--color-washi);
+    color: var(--color-sumi);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #18181B;
+    color: #FFFFFF;
+  }
+}
+
+/* Subtle Japanese texture & decorative utilities */
+.japanese-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.hairline-border {
+  border: 1px solid rgba(24, 24, 27, 0.08);
+}
+
+.hairline-b {
+  border-bottom: 1px solid rgba(24, 24, 27, 0.08);
+}
+
+.hairline-t {
+  border-top: 1px solid rgba(24, 24, 27, 0.08);
+}
