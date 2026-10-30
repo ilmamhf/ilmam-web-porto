@@ -4,13 +4,16 @@ import type { PersonalInfo, Project, Experience, SkillCategory, LogPost } from '
  * =========================================================================
  * PORTFOLIO DATA CONFIGURATION
  * =========================================================================
- * You can easily update this file with your own real-world data,
- * or send your resume/LinkedIn details and we'll format it for you.
+ * To change images:
+ * - Profile avatar: set `avatarUrl` to a web URL or place your image in `public/` (e.g., "/profile.jpg")
+ * - Project images: set `imageUrl` for each project (e.g., "/projects/project1.png" or Unsplash URL)
  */
 
 export const personalInfo: PersonalInfo = {
   name: "Ilmam",
-  kanjiName: "イルマム", // Japanese phonetic representation for aesthetic touch
+  kanjiName: "イルマム",
+  // Profile picture: Can be an external URL, or a local image placed in public/ (e.g. "/avatar.jpg")
+  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
   role: "Software Engineer & Systems Architect",
   tagline: "Designing resilient backend architectures, clean APIs, and minimalist interfaces.",
   bio: "Software engineer dedicated to crafting high-performance, maintainable web systems. Guided by principles of restraint, clean modular design, and robust distributed fundamentals. Constantly exploring the intersection of modern web ecosystems, cloud infrastructure, and intuitive developer tooling.",
@@ -21,7 +24,7 @@ export const personalInfo: PersonalInfo = {
     label: "Open to new engineering challenges & collaborations"
   },
   contact: {
-    email: "ilmam.dev@example.com", // Replace with your email
+    email: "ilmam.dev@example.com",
     github: "https://github.com/ilmam",
     linkedin: "https://linkedin.com/in/ilmam",
     twitter: "https://x.com/ilmam",
@@ -48,6 +51,7 @@ export const projects: Project[] = [
     ],
     techStack: ["Go", "gRPC", "Redis", "Docker", "Prometheus", "PostgreSQL"],
     category: "Backend & Systems",
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
     githubUrl: "https://github.com",
     liveUrl: "https://demo.example.com",
     featured: true,
@@ -65,6 +69,7 @@ export const projects: Project[] = [
     ],
     techStack: ["TypeScript", "Node.js", "NestJS", "PostgreSQL", "Redis", "Docker", "AWS"],
     category: "Full-Stack",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     githubUrl: "https://github.com",
     liveUrl: "https://demo.example.com",
     featured: true,
@@ -81,6 +86,7 @@ export const projects: Project[] = [
     ],
     techStack: ["React", "TypeScript", "Tailwind CSS", "Go", "ClickHouse", "WebSockets"],
     category: "Full-Stack",
+    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
     githubUrl: "https://github.com",
     liveUrl: "https://demo.example.com",
     featured: true,
@@ -97,6 +103,7 @@ export const projects: Project[] = [
     ],
     techStack: ["Terraform", "Kubernetes", "Go", "AWS EKS", "GitHub Actions"],
     category: "Cloud & DevOps",
+    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
     githubUrl: "https://github.com",
     featured: false,
     metrics: "Zero-Downtime Deployments"

@@ -48,66 +48,99 @@ export const Projects: FC = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group bg-white border border-neutral-200/90 rounded-xs p-7 sm:p-8 flex flex-col justify-between hover:border-neutral-400 transition-all duration-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
+              className="group bg-white border border-neutral-200/90 rounded-xs overflow-hidden flex flex-col justify-between hover:border-neutral-400 transition-all duration-300 hover:shadow-[0_4px_24px_rgba(0,0,0,0.03)]"
             >
               <div>
-                {/* Header of Card */}
-                <div className="flex items-center justify-between text-xs font-mono text-neutral-400 mb-4 pb-3 border-b border-neutral-100">
-                  <div className="flex items-center gap-2">
-                    <span className="text-neutral-900 font-bold">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    {project.japaneseTitle && (
-                      <span className="font-serif text-neutral-400 font-normal">
-                        · {project.japaneseTitle}
+                {/* Project Image Preview Frame */}
+                {project.imageUrl && (
+                  <div className="relative aspect-16/9 w-full bg-neutral-100 overflow-hidden border-b border-neutral-200/80">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+                      loading="lazy"
+                    />
+
+                    {/* Subtle gradient vignette at bottom */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Category pill on top right */}
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-xs px-2.5 py-1 border border-neutral-200 rounded-xs text-[11px] font-mono text-neutral-700 shadow-xs">
+                      {project.category}
+                    </div>
+
+                    {/* Live link quick indicator on hover */}
+                    {project.liveUrl && (
+                      <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-900 text-white px-2.5 py-1 text-xs font-mono rounded-xs flex items-center gap-1">
+                        <span>Preview</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Card Content Area */}
+                <div className="p-7 sm:p-8">
+                  {/* Header of Card */}
+                  <div className="flex items-center justify-between text-xs font-mono text-neutral-400 mb-3 pb-3 border-b border-neutral-100">
+                    <div className="flex items-center gap-2">
+                      <span className="text-neutral-900 font-bold">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      {project.japaneseTitle && (
+                        <span className="font-serif text-neutral-400 font-normal">
+                          · {project.japaneseTitle}
+                        </span>
+                      )}
+                    </div>
+                    {!project.imageUrl && (
+                      <span className="px-2 py-0.5 bg-neutral-100 text-neutral-600 text-[11px] rounded-xs">
+                        {project.category}
                       </span>
                     )}
                   </div>
-                  <span className="px-2 py-0.5 bg-neutral-100 text-neutral-600 text-[11px] rounded-xs">
-                    {project.category}
-                  </span>
+
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-neutral-900 group-hover:text-black tracking-tight">
+                    {project.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="mt-3 text-sm text-neutral-600 leading-relaxed font-normal">
+                    {project.description}
+                  </p>
+
+                  {/* Architecture Highlights */}
+                  {project.architectureDetails && project.architectureDetails.length > 0 && (
+                    <div className="mt-5 pt-4 border-t border-neutral-100">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 block mb-2">
+                        Architecture Highlights
+                      </span>
+                      <ul className="space-y-1.5 text-xs text-neutral-600">
+                        {project.architectureDetails.map((detail, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="text-[#C8321A] mt-0.5">―</span>
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Performance / Metrics Badge */}
+                  {project.metrics && (
+                    <div className="mt-4 px-3 py-1.5 bg-neutral-50 border border-neutral-150 rounded-xs inline-flex items-center gap-2 text-xs font-mono text-neutral-700">
+                      <Cpu className="w-3.5 h-3.5 text-neutral-400" />
+                      <span>{project.metrics}</span>
+                    </div>
+                  )}
                 </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-neutral-900 group-hover:text-black tracking-tight">
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <p className="mt-3 text-sm text-neutral-600 leading-relaxed font-normal">
-                  {project.description}
-                </p>
-
-                {/* Architecture Highlights */}
-                {project.architectureDetails && project.architectureDetails.length > 0 && (
-                  <div className="mt-5 pt-4 border-t border-neutral-100">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 block mb-2">
-                      Architecture Highlights
-                    </span>
-                    <ul className="space-y-1.5 text-xs text-neutral-600">
-                      {project.architectureDetails.map((detail, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <span className="text-[#C8321A] mt-0.5">―</span>
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Performance / Metrics Badge */}
-                {project.metrics && (
-                  <div className="mt-4 px-3 py-1.5 bg-neutral-50 border border-neutral-150 rounded-xs inline-flex items-center gap-2 text-xs font-mono text-neutral-700">
-                    <Cpu className="w-3.5 h-3.5 text-neutral-400" />
-                    <span>{project.metrics}</span>
-                  </div>
-                )}
               </div>
 
               {/* Bottom footer: Tech Stack & Links */}
-              <div className="mt-8 pt-5 border-t border-neutral-100 flex flex-col gap-4">
+              <div className="px-7 sm:px-8 pb-7 sm:pb-8 pt-0 flex flex-col gap-4">
                 {/* Tech Pills */}
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-100">
                   {project.techStack.map((tech) => (
                     <span
                       key={tech}

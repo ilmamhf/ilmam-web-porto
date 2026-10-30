@@ -1,6 +1,7 @@
 export interface PersonalInfo {
   name: string;
   kanjiName?: string;
+  avatarUrl?: string;
   role: string;
   tagline: string;
   bio: string;
@@ -36,6 +37,7 @@ export interface Project {
   githubUrl?: string;
   featured: boolean;
   metrics?: string;
+  imageUrl?: string;
 }
 
 export interface Experience {
