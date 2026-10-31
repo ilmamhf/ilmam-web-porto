@@ -21,7 +21,7 @@ export const Projects: FC = () => {
           <SectionHeading
             number="01"
             title="Selected Works & Practical Builds"
-            japaneseTitle="制作・開発プロジェクト"
+            subtitle="PROJECTS"
             description="Hands-on web applications, developer utilities, and internal tools bridging frontend, backend, and operations."
           />
 
@@ -87,9 +87,9 @@ export const Projects: FC = () => {
                       <span className="text-neutral-900 font-bold">
                         {String(index + 1).padStart(2, '0')}
                       </span>
-                      {project.japaneseTitle && (
-                        <span className="font-serif text-neutral-400 font-normal">
-                          · {project.japaneseTitle}
+                      {project.subtitle && (
+                        <span className="text-neutral-400 font-mono text-[11px]">
+                          · {project.subtitle}
                         </span>
                       )}
                     </div>

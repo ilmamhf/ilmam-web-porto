@@ -18,9 +18,9 @@ export const Contact: FC = () => {
     <section id="contact" className="py-20 md:py-28 border-b border-neutral-200/70 bg-[#FAFAF9]">
       <div className="max-w-6xl mx-auto px-6 sm:px-8">
         <SectionHeading
-          number="05"
+          number="04"
           title="Initiate Contact & Collaboration"
-          japaneseTitle="連絡・お問い合わせ"
+          subtitle="CONNECT"
           description="Interested in discussing a junior engineering role, open-source project, or engineering collaboration? Reach out directly."
         />
 
@@ -137,22 +137,24 @@ export const Contact: FC = () => {
                 <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest">
                   PHILOSOPHY
                 </span>
-                <span className="font-serif text-xs text-neutral-400">
-                  技術理念
+                <span className="font-mono text-xs text-neutral-400 uppercase">
+                  VALUES
                 </span>
               </div>
 
-              {/* Japanese Seal Stamp (Hanko) */}
+              {/* Minimalist Seal */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 border-2 border-[#C8321A] text-[#C8321A] rounded-xs flex items-center justify-center p-1 font-serif text-xs leading-tight text-center font-bold select-none">
-                  初心<br />向上
+                <div className="w-14 h-14 border-2 border-[#C8321A] text-[#C8321A] rounded-xs flex flex-col items-center justify-center p-1 font-mono text-[10px] leading-tight text-center font-bold select-none tracking-tighter">
+                  <span>CODE</span>
+                  <span className="w-6 h-[1px] bg-[#C8321A] my-0.5"></span>
+                  <span>GROW</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-sm text-neutral-900">
-                    Beginner's Mind (Shoshin)
+                    Continuous Learning
                   </h4>
-                  <p className="text-xs text-neutral-500 font-serif">
-                    初心 · 好奇心 · 継続的成長
+                  <p className="text-xs text-neutral-500 font-mono text-[11px]">
+                    Curiosity · Pragmatism · Growth
                   </p>
                 </div>
               </div>

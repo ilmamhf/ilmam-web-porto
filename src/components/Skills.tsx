@@ -25,7 +25,7 @@ export const Skills: FC = () => {
         <SectionHeading
           number="03"
           title="Technical Tooling & Foundations"
-          japaneseTitle="技術基盤・習得分野"
+          subtitle="SKILLS"
           description="Languages, frameworks, database tools, and cross-division collaborative workflows I work with."
         />
 
@@ -43,9 +43,9 @@ export const Skills: FC = () => {
                       0{index + 1}
                     </span>
                   </div>
-                  {category.japaneseTitle && (
-                    <span className="font-serif text-xs text-neutral-400">
-                      {category.japaneseTitle}
+                  {category.subtitle && (
+                    <span className="font-mono text-xs text-neutral-400">
+                      {category.subtitle}
                     </span>
                   )}
                 </div>

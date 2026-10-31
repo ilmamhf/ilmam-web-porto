@@ -10,7 +10,7 @@ export const Experience: FC = () => {
         <SectionHeading
           number="02"
           title="Work History & Experience"
-          japaneseTitle="職務経歴・実績"
+          subtitle="TIMELINE"
           description="Practical experience across engineering, QA testing, cross-functional sprints, and operational workflows."
         />
 

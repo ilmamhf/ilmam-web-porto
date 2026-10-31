@@ -16,11 +16,10 @@ export const Header: FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Projects', href: '#projects', ja: '制作' },
-    { name: 'Experience', href: '#experience', ja: '経歴' },
-    { name: 'Arsenal', href: '#skills', ja: '技術' },
-    { name: 'Logs', href: '#logs', ja: '記録' },
-    { name: 'Contact', href: '#contact', ja: '連絡' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Arsenal', href: '#skills' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -42,7 +41,7 @@ export const Header: FC = () => {
               {personalInfo.name}
             </span>
             <span className="font-mono text-[10px] text-neutral-400 tracking-widest mt-1">
-              ENGINEERING LOG
+              SOFTWARE ENGINEER
             </span>
           </div>
         </a>
@@ -53,12 +52,9 @@ export const Header: FC = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-normal text-neutral-600 hover:text-neutral-950 transition-colors flex items-baseline gap-1.5"
+              className="text-sm font-normal text-neutral-600 hover:text-neutral-950 transition-colors"
             >
-              <span>{link.name}</span>
-              <span className="text-[10px] font-serif text-neutral-400 group-hover:text-neutral-600">
-                {link.ja}
-              </span>
+              {link.name}
             </a>
           ))}
         </nav>
@@ -101,7 +97,6 @@ export const Header: FC = () => {
                 className="flex items-center justify-between text-base font-medium text-neutral-800 py-2 border-b border-neutral-100"
               >
                 <span>{link.name}</span>
-                <span className="font-serif text-xs text-neutral-400">{link.ja}</span>
               </a>
             ))}
             <div className="pt-2 flex items-center justify-between">

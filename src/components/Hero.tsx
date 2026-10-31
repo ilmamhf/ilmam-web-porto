@@ -30,11 +30,6 @@ export const Hero: FC = () => {
       {/* Subtle Japanese grid background */}
       <div className="absolute inset-0 japanese-grid opacity-50 pointer-events-none" />
 
-      {/* Decorative vertical Japanese label */}
-      <div className="hidden xl:block absolute right-8 top-36 select-none pointer-events-none text-neutral-300/60 font-serif text-sm tracking-widest [writing-mode:vertical-rl]">
-        確実な設計 · 静かな洗練 · ソフトウェア開発
-      </div>
-
       <div className="relative max-w-6xl mx-auto px-6 sm:px-8">
         {/* Top Eyebrow / Meta row */}
         <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-neutral-500 mb-8">
@@ -126,11 +121,11 @@ export const Hero: FC = () => {
                   </div>
                 )}
 
-                {/* Hanko stamp watermark on bottom right */}
+                {/* Minimalist watermark badge on bottom right */}
                 <div className="absolute bottom-3 right-3 select-none pointer-events-none bg-white/90 backdrop-blur-xs px-2 py-1 border border-neutral-200 rounded-xs flex items-center gap-1.5 shadow-xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C8321A]"></span>
-                  <span className="font-serif text-[11px] text-neutral-700 tracking-wider">
-                    {personalInfo.kanjiName || "技術者"}
+                  <span className="font-mono text-[10px] text-neutral-700 tracking-wider font-medium">
+                    DEV
                   </span>
                 </div>
               </div>

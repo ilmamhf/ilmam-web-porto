@@ -1,6 +1,5 @@
 export interface PersonalInfo {
   name: string;
-  kanjiName?: string;
   avatarUrl?: string;
   role: string;
   tagline: string;
@@ -28,7 +27,7 @@ export interface PersonalInfo {
 export interface Project {
   id: string;
   title: string;
-  japaneseTitle?: string;
+  subtitle?: string;
   description: string;
   architectureDetails: string[];
   techStack: string[];
@@ -55,20 +54,10 @@ export interface Experience {
 
 export interface SkillCategory {
   title: string;
-  japaneseTitle?: string;
+  subtitle?: string;
   skills: Array<{
     name: string;
     level?: 'Proficient' | 'Familiar' | 'Learning' | 'Advanced';
     iconName?: string;
   }>;
-}
-
-export interface LogPost {
-  id: string;
-  title: string;
-  date: string;
-  readTime: string;
-  summary: string;
-  tags: string[];
-  link?: string;
 }

@@ -15,11 +15,7 @@ export const Footer: FC = () => {
             {personalInfo.name.toUpperCase()}
           </span>
           <span className="hidden sm:inline text-neutral-300">·</span>
-          <span className="font-serif text-neutral-400">
-            {personalInfo.kanjiName}
-          </span>
-          <span className="hidden sm:inline text-neutral-300">·</span>
-          <span>Software Engineer Portfolio & Log</span>
+          <span>Software Engineer Portfolio</span>
         </div>
 
         <div className="flex items-center gap-6">
