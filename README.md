@@ -71,3 +71,28 @@ npm run build
 # Preview production build locally
 npm run preview
 ```
+
+---
+
+## 🌐 Deploy to GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages via GitHub Actions.
+
+### One-time Setup
+
+1. **Enable GitHub Pages** in your repository settings:
+   - Go to **Settings** → **Pages**
+   - Under **Build and deployment** → **Source**, select **GitHub Actions**
+
+2. **Push to main branch** — the workflow will automatically build and deploy on every push to `main`.
+
+### Manual Deployment
+
+You can also trigger a deployment manually:
+- Go to **Actions** → **Deploy to GitHub Pages** → **Run workflow**
+
+### Configuration Notes
+
+- The Vite config uses `base: './'` for relative asset paths (required for GitHub Pages project sites)
+- A `.nojekyll` file is included to bypass Jekyll processing
+- The workflow uploads the `dist/` folder as a Pages artifact
