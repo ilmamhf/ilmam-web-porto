@@ -5,6 +5,11 @@ import { projects } from '../data/portfolioData';
 import { SectionHeading } from './UI/SectionHeading';
 import { GithubIcon } from './UI/Icons';
 
+const normalizeUrl = (url?: string) => {
+  if (!url) return '';
+  return /^https?:\/\//i.test(url) ? url : `https://${url}`;
+};
+
 export const Projects: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
@@ -57,12 +62,9 @@ export const Projects: FC = () => {
                     <img
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-out"
+                      className="w-full h-full object-cover object-center"
                       loading="lazy"
                     />
-
-                    {/* Subtle gradient vignette at bottom */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                     {/* Category pill on top right */}
                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-xs px-2.5 py-1 border border-neutral-200 rounded-xs text-[11px] font-mono text-neutral-700 shadow-xs">
@@ -71,10 +73,15 @@ export const Projects: FC = () => {
 
                     {/* Live link quick indicator on hover */}
                     {project.liveUrl && (
-                      <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neutral-900 text-white px-2.5 py-1 text-xs font-mono rounded-xs flex items-center gap-1">
+                      <a
+                        href={normalizeUrl(project.liveUrl)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-neutral-900/90 hover:bg-neutral-900 text-white px-2.5 py-1 text-xs font-mono rounded-xs flex items-center gap-1 shadow-xs"
+                      >
                         <span>Preview</span>
                         <ArrowUpRight className="w-3 h-3" />
-                      </div>
+                      </a>
                     )}
                   </div>
                 )}
@@ -155,7 +162,7 @@ export const Projects: FC = () => {
                 <div className="flex items-center gap-4 pt-1 text-xs font-medium">
                   {project.liveUrl && (
                     <a
-                      href={project.liveUrl}
+                      href={normalizeUrl(project.liveUrl)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-neutral-900 hover:text-[#C8321A] transition-colors"
@@ -166,7 +173,7 @@ export const Projects: FC = () => {
                   )}
                   {project.githubUrl && (
                     <a
-                      href={project.githubUrl}
+                      href={normalizeUrl(project.githubUrl)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-neutral-600 hover:text-neutral-900 transition-colors"

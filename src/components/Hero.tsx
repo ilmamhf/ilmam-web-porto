@@ -4,6 +4,7 @@ import { ArrowDown, Mail, MapPin, Clock } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { GithubIcon, LinkedinIcon } from './UI/Icons';
 
+
 export const Hero: FC = () => {
   const [timeString, setTimeString] = useState<string>('');
 
@@ -33,10 +34,10 @@ export const Hero: FC = () => {
       <div className="relative max-w-6xl mx-auto px-6 sm:px-8">
         {/* Top Eyebrow / Meta row */}
         <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-neutral-500 mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-neutral-200/90 rounded-xs">
+          {/* <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-neutral-200/90 rounded-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C8321A]"></span>
             <span className="text-neutral-800 font-medium">{personalInfo.role.toUpperCase()}</span>
-          </div>
+          </div> */}
           <div className="flex items-center gap-1.5 text-neutral-500">
             <MapPin className="w-3.5 h-3.5 text-neutral-400" />
             <span>{personalInfo.location}</span>
@@ -54,8 +55,8 @@ export const Hero: FC = () => {
           {/* Left Column (8 cols on lg) */}
           <div className="lg:col-span-8 flex flex-col justify-between">
             <div>
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-neutral-900 leading-[1.12]">
-                Building web applications with curiosity, adaptability, and disciplined craft.
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-900 leading-[1.12]">
+                Ilmam Hashfi Firjatullah
               </h1>
 
               <p className="mt-6 text-lg sm:text-xl text-neutral-600 font-normal leading-relaxed max-w-2xl">

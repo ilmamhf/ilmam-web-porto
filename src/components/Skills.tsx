@@ -26,7 +26,7 @@ export const Skills: FC = () => {
           number="03"
           title="Technical Tooling & Foundations"
           subtitle="SKILLS"
-          description="Languages, frameworks, database tools, and cross-division collaborative workflows I work with."
+          description="Languages, frameworks, databases, and tools/workflows I work with."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

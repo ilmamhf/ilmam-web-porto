@@ -1,13 +1,14 @@
 import type { PersonalInfo, Project, Experience, SkillCategory } from '../types/portfolio';
 import ConversatypePreview from '../assets/Conversatype.png';
 import YourPageCmsPreview from '../assets/Page CMS.png';
+import profilePicture from '../assets/pp1.jpg';
 
 export const personalInfo: PersonalInfo = {
   name: "Ilmam",
-  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+  avatarUrl: profilePicture,  
   role: "Software Engineer",
   tagline: "",
-  bio: "A Computer Engineering Graduate with a current focus of Web Development and Transferable Programming Fundamental. I have multiple exposure to technologies from college and projects which is Web Development, IoT, LLM/AI/ML models implementation (Local and API), Databases (SQL, NoSQL, and S3 Object Storage), Cloud Services (Supabase, Firebase, AWS, Vercel, etc) to integrating multiple application (Web-Cloud-AI-Mobile). I also try to do some codewars, leetcode, or experimenting something new in my free time. My target is that one day i become a senior software engineer who can deliver products efficiently and maneuver between framework, devices, and technologies easily.",
+  bio: "A Computer Engineering Graduate with a current focus of Web Development and Transferable Programming Fundamental. I have multiple exposure to technologies from college and projects which is Web Development, IoT, LLM/AI/ML models implementation (Local and API), Databases (SQL, NoSQL, and S3 Object Storage), Cloud Services (Supabase, Firebase, AWS, Vercel, etc) to integrating multiple application (Web-Cloud-AI-Mobile). I also try to do some codewars, leetcode, or experimenting something new in my free time. Accountability and deliverability are my core values in developing products.",
   location: "Indonesia / Remote",
   timezone: "UTC+7 (WIB)",
   availability: {
@@ -42,17 +43,17 @@ export const projects: Project[] = [
   {
     id: "2",
     title: "Conversatype",
-    description: "A web-based typing game for training typing words and simulating English conversation. Made using Vite React Tailwind and Antigravity AI Driven Development. This project is a result of experimenting doing a Web Development from zero to deployment with AI Driven Development. Experimented with publishing website and SEO, used Vercel for Deployment, Cloudflare for Domain, Google Search Console for making site indexed from google search, and Posthog/Vercel for site analytics.",
+    description: "A web-based typing game for training typing words and simulating English conversation. Made using Vite React Tailwind and Antigravity. This project is a result of experimenting doing Web Development from zero to deployment using AI Driven Development. Experimented with publishing website and SEO, used Vercel for Deployment, Cloudflare for Domain, Google Search Console for making site indexed from google search, and Posthog for site analytics.",
     architectureDetails: [
       "Clean gamified Web made using Vite React Tailwind",
       "Tested AI Driven Development",
-      "Full live site deployed"
+      "Full live site deployed and google indexed"
     ],
     techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel", "Posthog", "Google Search Console"],
     category: "Tools & Ops",
     imageUrl: ConversatypePreview,
     githubUrl: "https://github.com/ilmamhf/Conversatype-Web",
-    liveUrl: "conversatype-web.vercel.app",
+    liveUrl: "https://conversatype-web.vercel.app",
     featured: true,
   },
 ];
@@ -67,8 +68,8 @@ export const experiences: Experience[] = [
     type: "Internship",
     description: "Developed several Fullstack Web and Automation PoC built around AI/ML/LLM models. Mainly doing research to company poc product ideas and exploring LLM API, N8N Automation, and Computer Vision based projects.",
     highlights: [
-      "Developed 3+ AI based PoC products.",
-      "Learnt, researched, developed and participated to client based product development with company CTO.",
+      "Developed and delivered 3+ AI based PoC products.",
+      "Learnt, researched, developed and participated in client based product development with company CTO.",
       "Participated in daily standups, sprint reviews, and technical code reviews to learn professional software development industry."
     ],
     technologies: ["NextJS", "Python FastAPI", "N8N", "YOLO", "OpenRouter", "Supabase", "Kaggle", "Google Colab", "Gemini", "Label Studio", "Roboflow", "Spreadsheet"]
@@ -114,8 +115,9 @@ export const skillCategories: SkillCategory[] = [
       { name: "Docker Basics", level: "Learning" },
       { name: "Miro", level: "Familiar" },
       { name: "Excalidraw", level: "Familiar" },
-      { name: "Google Workspaces", level: "Familiar" },
+      { name: "Google Workspace", level: "Familiar" },
       { name: "SEO", level: "Learning" },
+      { name: "Figma", level: "Familiar" },
     ]
   }
 ];
