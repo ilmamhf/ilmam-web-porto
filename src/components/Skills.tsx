@@ -56,18 +56,10 @@ export const Skills: FC = () => {
 
                 <ul className="space-y-3">
                   {category.skills.map((skill) => (
-                    <li
-                      key={skill.name}
-                      className="flex items-center justify-between text-xs py-1"
-                    >
+                    <li key={skill.name} className="text-xs py-1">
                       <span className="font-medium text-neutral-700 font-mono">
                         {skill.name}
                       </span>
-                      {skill.level && (
-                        <span className="text-[10px] font-mono text-neutral-400 px-1.5 py-0.5 bg-neutral-100 rounded-xs">
-                          {skill.level}
-                        </span>
-                      )}
                     </li>
                   ))}
                 </ul>
