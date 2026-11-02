@@ -44,8 +44,29 @@ async function prerender() {
   const clientJsFile = clientJsFiles[0]
   const clientScriptTag = `<script type="module" src="./assets/${clientJsFile}"></script>`
 
+  // Find the stylesheets emitted by the client build — without these the
+  // pre-rendered page ships unstyled (plain HTML, no Tailwind).
+  const cssFiles = readdirSync(assetsDir).filter(f => f.endsWith('.css'))
+  if (cssFiles.length === 0) {
+    throw new Error('No CSS bundle found in dist/assets')
+  }
+  const cssLinkTags = cssFiles
+    .map(f => `<link rel="stylesheet" href="./assets/${f}">`)
+    .join('\n    ')
+
   // Replace placeholder with actual client script tag
-  const finalHtml = html.replace('<!-- CLIENT_SCRIPT_PLACEHOLDER -->', clientScriptTag)
+  let finalHtml = html.replace('<!-- CLIENT_SCRIPT_PLACEHOLDER -->', clientScriptTag)
+
+  // Inject the stylesheet link(s) before </head>
+  finalHtml = finalHtml.replace(
+    '</head>',
+    `    ${cssLinkTags}\n  </head>`,
+  )
+
+  // The SSR bundle emits root-absolute asset URLs (/assets/...), which break on
+  // the GitHub Pages project site (/ilmam-web-porto/). Make them relative so the
+  // build works at any base path.
+  finalHtml = finalHtml.replace(/(["'(])\/assets\//g, '$1./assets/')
 
   const distDir = resolve(root, 'dist')
   if (!existsSync(distDir)) {
