@@ -1,5 +1,5 @@
 import { build } from 'vite'
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { dirname, resolve, join } from 'path'
 
@@ -35,12 +35,24 @@ async function prerender() {
   const fileUrl = `file://${serverEntryPath.replace(/\\/g, '/')}`
   const { html } = await import(fileUrl)
 
+  // Find the built client JS bundle
+  const assetsDir = resolve(root, 'dist/assets')
+  const clientJsFiles = readdirSync(assetsDir).filter(f => f.startsWith('client-') && f.endsWith('.js'))
+  if (clientJsFiles.length === 0) {
+    throw new Error('No client JS bundle found in dist/assets')
+  }
+  const clientJsFile = clientJsFiles[0]
+  const clientScriptTag = `<script type="module" src="./assets/${clientJsFile}"></script>`
+
+  // Replace placeholder with actual client script tag
+  const finalHtml = html.replace('<!-- CLIENT_SCRIPT_PLACEHOLDER -->', clientScriptTag)
+
   const distDir = resolve(root, 'dist')
   if (!existsSync(distDir)) {
     mkdirSync(distDir, { recursive: true })
   }
 
-  writeFileSync(resolve(distDir, 'index.html'), html)
+  writeFileSync(resolve(distDir, 'index.html'), finalHtml)
   console.log('✅ Pre-rendered HTML written to dist/index.html')
 }
 

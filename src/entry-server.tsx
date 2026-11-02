@@ -24,7 +24,7 @@ const html = `
   </head>
   <body class="bg-[#FAFAF9] text-[#18181B] selection:bg-neutral-900 selection:text-white antialiased font-sans">
     <div id="root">${appHtml}</div>
-    <script type="module" src="./src/entry-client.tsx"></script>
+    <!-- CLIENT_SCRIPT_PLACEHOLDER -->
   </body>
 </html>
 `;
