@@ -78,21 +78,124 @@ npm run preview
 
 This project is configured for automatic deployment to GitHub Pages via GitHub Actions.
 
-### One-time Setup
+### One-time Setup (Root Domain: `ilmamhf.github.io`)
 
-1. **Enable GitHub Pages** in your repository settings:
-   - Go to **Settings** → **Pages**
-   - Under **Build and deployment** → **Source**, select **GitHub Actions**
+1. **Create the target repository** on GitHub:
+   - Repository name: **`ilmamhf.github.io`** (exact match for user/org site)
+   - Public or Private — either works
+   - **Don't** initialize with README, .gitignore, or license
 
-2. **Push to main branch** — the workflow will automatically build and deploy on every push to `main`.
+2. **Generate a Personal Access Token (classic)**:
+   - Go to https://github.com/settings/tokens/new
+   - Scopes: **`repo`** (full control of private repositories)
+   - Copy the token immediately
 
-### Manual Deployment
+3. **Add the token as a secret in THIS repo** (`ilmam-web-porto`):
+   - Go to **Settings** → **Secrets and variables** → **Actions**
+   - **New repository secret** → Name: `DEPLOY_TOKEN` → Paste your PAT
 
-You can also trigger a deployment manually:
-- Go to **Actions** → **Deploy to GitHub Pages** → **Run workflow**
+4. **Enable GitHub Pages** in the target repo (`ilmamhf.github.io`):
+   - **Settings** → **Pages** → **Source**: **GitHub Actions**
+
+5. **Push to `main`** — the workflow `Deploy to User Site` will:
+   - Build with pre-rendering (see below)
+   - Push `dist/` contents to `ilmamhf/ilmamhf.github.io` on `main` branch
+   - Site live at **`https://ilmamhf.github.io`**
+
+### Project Site Backup (Optional)
+
+A second workflow (`Deploy to GitHub Pages`) deploys to `https://ilmamhf.github.io/ilmam-web-porto/` as a fallback.
+
+---
+
+## 🔍 SEO & Crawler Support (Static Pre-Rendering)
+
+This project uses **Static Site Generation (SSG)** via Vite's native SSR — no Next.js required.
+
+### How It Works
+
+```
+npm run build
+    │
+    ├── 1. Client Build (Vite)
+    │      Entry: index.html → src/entry-client.tsx
+    │      Output: dist/assets/*.js, *.css, images
+    │
+    ├── 2. SSR Build (Vite --ssr)
+    │      Entry: src/entry-server.tsx
+    │      Output: dist-ssr/entry-server.mjs
+    │
+    └── 3. Pre-Render (prerender.mjs)
+           Loads SSR bundle → renderToString(<App />)
+           Writes complete HTML to dist/index.html (~42 KB)
+```
+
+### Crawler Behavior
+
+| Crawler Type | What It Sees |
+|--------------|--------------|
+| **Search Engines** (Google, Bing) | Full portfolio content in initial HTML — all sections, headings, links, meta tags |
+| **AI Crawlers** (GPTBot, ClaudeBot, PerplexityBot) | Complete readable content without JavaScript execution |
+| **Content Extractors** (curl, wget, readability) | Structured HTML with semantic sections |
+| **Social Previews** (Open Graph, Twitter Cards) | Meta tags rendered in source HTML |
+
+### Runtime Flow
+
+1. **Browser requests** `https://ilmamhf.github.io/`
+2. **GitHub Pages serves** `dist/index.html` (pre-rendered, static)
+3. **Crawlers immediately see** all content — no JS needed
+4. **Browser loads** `client-*.js` + `client-*.css`
+5. **React hydrates** existing DOM (`hydrateRoot`) — preserves server HTML, adds interactivity
+6. **Client-only features activate**: live clock (Hero), scroll header, copy-to-clipboard, project filters
+
+### Key Files for SSG
+
+| File | Purpose |
+|------|---------|
+| `src/entry-server.tsx` | SSR entry — `renderToString(<App />)` → HTML string |
+| `src/entry-client.tsx` | Hydration entry — `hydrateRoot()` attaches React |
+| `prerender.mjs` | Build orchestrator — runs both builds + generates `index.html` |
+| `vite.config.ts` | `ssr.noExternal` bundles React/lucide for SSR |
+
+### Client-Only Features (SSR-Safe)
+
+Components use `useEffect` for browser-only APIs — render initial state on server, enhance on client:
+- **Hero**: Live clock (WIB timezone)
+- **Header**: Scroll detection, mobile menu
+- **Contact**: Copy email to clipboard
+- **Projects**: Category filter pills
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production (with pre-rendering)
+npm run build
+
+# Preview production build locally
+npm run preview
+```
+
+### Build Output
+
+```
+dist/
+├── index.html          # Pre-rendered HTML (~42 KB, full content)
+├── assets/
+│   ├── client-*.js     # React + app code
+│   ├── client-*.css    # Tailwind styles
+│   └── *.png, *.jpg    # Images
+├── favicon.svg
+├── icons.svg
+└── .nojekyll           # Bypass Jekyll on GitHub Pages
+```
 
 ### Configuration Notes
 
-- The Vite config uses `base: './'` for relative asset paths (required for GitHub Pages project sites)
-- A `.nojekyll` file is included to bypass Jekyll processing
-- The workflow uploads the `dist/` folder as a Pages artifact
+- `vite.config.ts` uses `base: './'` for relative asset paths (required for GitHub Pages)
+- `.nojekyll` in `public/` bypasses Jekyll processing
+- `prerender.mjs` handles Windows file:// URL compatibility for ESM imports

@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build (with pre-rendering)
         run: npm run build
 
       - name: Deploy to ilmamhf.github.io

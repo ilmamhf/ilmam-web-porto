@@ -1,0 +1,32 @@
+import { renderToString } from 'react-dom/server';
+import { StrictMode } from 'react';
+import App from './App';
+import './index.css';
+
+const appHtml = renderToString(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+
+const html = `
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ilmam — Software Engineer & Web Developer</title>
+    <meta name="description" content="Portfolio of Ilmam — Software engineer with cross-division exposure across frontend, backend, QA, and operations." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#FAFAF9] text-[#18181B] selection:bg-neutral-900 selection:text-white antialiased font-sans">
+    <div id="root">${appHtml}</div>
+    <script type="module" src="./src/entry-client.tsx"></script>
+  </body>
+</html>
+`;
+
+export { html };

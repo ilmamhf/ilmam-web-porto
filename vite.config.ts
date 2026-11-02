@@ -9,4 +9,14 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        client: 'index.html',
+      },
+    },
+  },
+  ssr: {
+    noExternal: ['react', 'react-dom', 'lucide-react'],
+  },
 })
